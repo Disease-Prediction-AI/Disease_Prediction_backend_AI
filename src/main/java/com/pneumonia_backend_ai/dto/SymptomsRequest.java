@@ -1,20 +1,17 @@
-package com.pneumonia_backend_ai.payloads;
-
+package com.pneumonia_backend_ai.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class AuthenticationRequest {
-
-    private String email;
-
-    private String password;
-
+public class SymptomsRequest {
+    private List<String> symptoms;
 }
+

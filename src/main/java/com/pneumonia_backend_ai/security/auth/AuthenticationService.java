@@ -3,8 +3,8 @@ package com.pneumonia_backend_ai.security.auth;
 
 import com.pneumonia_backend_ai.entities.Role;
 import com.pneumonia_backend_ai.entities.User;
-import com.pneumonia_backend_ai.payloads.AuthenticationRequest;
-import com.pneumonia_backend_ai.payloads.AuthenticationResponse;
+import com.pneumonia_backend_ai.dto.AuthenticationRequest;
+import com.pneumonia_backend_ai.dto.AuthenticationResponse;
 import com.pneumonia_backend_ai.repositories.UserRepo;
 import com.pneumonia_backend_ai.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;

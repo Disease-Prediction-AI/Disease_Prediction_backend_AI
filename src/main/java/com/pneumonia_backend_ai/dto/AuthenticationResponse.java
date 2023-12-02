@@ -1,4 +1,4 @@
-package com.pneumonia_backend_ai.payloads;
+package com.pneumonia_backend_ai.dto;
 
 
 import com.pneumonia_backend_ai.entities.User;

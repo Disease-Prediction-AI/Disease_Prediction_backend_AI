@@ -1,4 +1,4 @@
-package com.pneumonia_backend_ai.payloads;
+package com.pneumonia_backend_ai.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

@@ -1,9 +1,9 @@
 package com.pneumonia_backend_ai.controllers;
 
 import com.pneumonia_backend_ai.entities.User;
-import com.pneumonia_backend_ai.payloads.AuthenticationRequest;
-import com.pneumonia_backend_ai.payloads.AuthenticationResponse;
-import com.pneumonia_backend_ai.payloads.Response;
+import com.pneumonia_backend_ai.dto.AuthenticationRequest;
+import com.pneumonia_backend_ai.dto.AuthenticationResponse;
+import com.pneumonia_backend_ai.dto.Response;
 import com.pneumonia_backend_ai.security.auth.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
