@@ -21,7 +21,7 @@ class DiseaseModel:
     
     def prepare_symptoms_array(self, symptoms):
         symptoms_array = np.zeros((1,133))
-        df = pd.read_csv('data/clean_dataset_disease_prediction.tsv', sep='\t')
+        df = pd.read_csv('src/main/resources/data /clean_dataset_disease_prediction.tsv', sep='\t')
         
         for symptom in symptoms:
             symptom_idx = df.columns.get_loc(symptom)
@@ -76,7 +76,7 @@ class DiseaseModel:
 
     def disease_list(self):
 
-        df = pd.read_csv('data/clean_dataset_disease_prediction.tsv', sep='\t')
+        df = pd.read_csv('src/main/resources/data /clean_dataset_disease_prediction.tsv', sep='\t')
         # Preprocessing
         y_data = df.iloc[:,-1]
         X_data = df.iloc[:,:-1]
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     symptoms = sys.argv[1:]
 
     model = DiseaseModel()
-    model.load_xgboost("model/model_disease_prediction.json")
+    model.load_xgboost("src/main/resources/model/model_disease_prediction.json")
     
 
     disease_name, disease_prob = model.predict(symptoms)
@@ -103,6 +103,6 @@ if __name__ == "__main__":
     print(f'disease name: { disease_name }\n')
     print(f'disease probality: { math.ceil(disease_prob * 100) } %')
 
-    print(model.describe_predicted_disease())
-    print(model.predicted_disease_precautions())
+#     print(model.describe_predicted_disease())
+#     print(model.predicted_disease_precautions())
 

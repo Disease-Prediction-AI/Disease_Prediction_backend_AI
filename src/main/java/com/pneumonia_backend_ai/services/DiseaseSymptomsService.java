@@ -18,10 +18,11 @@ public class DiseaseSymptomsService {
 
     public DiseaseResponse getDiseaseDetails(List<String> symptoms){
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder("python", resolvePythonScriptPath("predict/predict_disease_prediction.py"));
+            ProcessBuilder processBuilder = new ProcessBuilder("python3", resolvePythonScriptPath("predict/predict_disease_prediction.py"));
             processBuilder.command().addAll(symptoms);
             Process process = processBuilder.start();
             String jsonResponse = readOutput(process);
+            System.out.println("Error Stream: " + readErrorStream(process));
             System.out.println(jsonResponse);
 
             int exitCode = process.waitFor();
@@ -47,6 +48,19 @@ public class DiseaseSymptomsService {
 
         InputStream inputStream = process.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+        StringBuilder output = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            output.append(line);
+        }
+
+        return output.toString();
+    }
+
+    private String readErrorStream(Process process) throws IOException {
+        InputStream errorStream = process.getErrorStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(errorStream));
 
         StringBuilder output = new StringBuilder();
         String line;
