@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import math 
 import sys
+import json
 
 class DiseaseModel:
 
@@ -44,7 +45,7 @@ class DiseaseModel:
             return "That disease is not contemplated in this model"
         
         # Read disease dataframe
-        desc_df = pd.read_csv('data/disease_description.csv')
+        desc_df = pd.read_csv('src/main/resources/data /disease_description.csv')
         desc_df = desc_df.apply(lambda col: col.str.strip())
 
         return desc_df[desc_df['Disease'] == disease_name]['Description'].values[0]
@@ -62,7 +63,7 @@ class DiseaseModel:
             return "That disease is not contemplated in this model"
 
         # Read precautions dataframe
-        prec_df = pd.read_csv('data/disease_precaution.csv')
+        prec_df = pd.read_csv('src/main/resources/data /disease_precaution.csv')
         prec_df = prec_df.apply(lambda col: col.str.strip())
 
         return prec_df[prec_df['Disease'] == disease_name].filter(regex='Precaution').values.tolist()[0]
@@ -100,9 +101,17 @@ if __name__ == "__main__":
 
     disease_name, disease_prob = model.predict(symptoms)
 
-    print(f'disease name: { disease_name }\n')
-    print(f'disease probality: { math.ceil(disease_prob * 100) } %')
+# Create a dictionary with the required fields
+    response_dict = {
+        "disease": disease_name,
+        "probability": math.ceil(disease_prob * 100),
+        "description": model.describe_predicted_disease(),
+        "precautions": model.predicted_disease_precautions()
+    }
 
-#     print(model.describe_predicted_disease())
-#     print(model.predicted_disease_precautions())
+    # Convert the dictionary to a JSON-formatted string
+    json_response = json.dumps(response_dict)
+
+    # Print the JSON response
+    print(json_response)
 
