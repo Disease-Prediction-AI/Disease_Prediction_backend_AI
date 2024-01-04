@@ -28,7 +28,7 @@ public class LungCancerService {
             processBuilder.command().addAll(symptoms);
             Process process = processBuilder.start();
             String jsonResponse = processUtils.readOutput(process);
-            System.out.println(jsonResponse);
+            //System.out.println(jsonResponse);
 
             int exitCode = process.waitFor();
 
