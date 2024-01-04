@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RequiredArgsConstructor
 
@@ -29,6 +31,9 @@ public class PneumoniaService {
             processBuilder.command().add(tempFile.toString());
             Process process = processBuilder.start();
             String jsonResponse = processUtils.readOutput(process);
+            jsonResponse = parseJsonOnly(jsonResponse);
+            System.out.println("response : " + jsonResponse);
+
             int exitCode = process.waitFor();
             Files.delete(tempFile);
 
@@ -50,4 +55,15 @@ public class PneumoniaService {
         }
         return null;
     }
+
+    private String parseJsonOnly(String response){
+        Pattern p = Pattern.compile("\\{[^}]*\\}");
+        Matcher matcher = p.matcher(response);
+        if (matcher.find()) {
+            return matcher.group(0);
+        }
+
+        return null;
+    }
+
 }

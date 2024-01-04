@@ -1,12 +1,11 @@
-
-
+import json
 import cv2
 import numpy as np
 import sys
 from keras.models import load_model
 
 class PneumoniaClassifier:
-    def __init__(self, model_filepath='model/model_pneumonia.h5'):
+    def __init__(self, model_filepath='src/main/resources/model/model_pneumonia.h5'):
         self.model = load_model(model_filepath)
 
     def preprocess_image(self, img_path, img_size=150):

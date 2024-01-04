@@ -4,7 +4,6 @@ import  com.fasterxml.jackson.databind.ObjectMapper;
 import com.pneumonia_backend_ai.dto.DiseaseResponse;
 import com.pneumonia_backend_ai.dto.LCPatientInfoRequest;
 import com.pneumonia_backend_ai.dto.LCPredictionResponse;
-import com.pneumonia_backend_ai.dto.PneumoniaPredictionResponse;
 import com.pneumonia_backend_ai.utils.ProcessUtils;
 
 import java.io.*;
@@ -14,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         //System.out.println(getDiseaseDetails(List.of("muscle_wasting", "patches_in_throat", "high_fever", "extra_marital_contacts")));
-        //System.out.println(getPrediction(new LCPatientInfoRequest("M","19","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO","NO")));
+        System.out.println(getPrediction(new LCPatientInfoRequest("M","19","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO","NO")));
 
     }
 
@@ -65,6 +64,5 @@ public class Main {
         }
         return null;
     }
-
 
 }
