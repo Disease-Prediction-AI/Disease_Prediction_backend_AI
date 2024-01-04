@@ -1,26 +1,30 @@
 package com.pneumonia_backend_ai.services;
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pneumonia_backend_ai.dto.DiseaseResponse;
+import com.pneumonia_backend_ai.dto.LCPatientInfoRequest;
+import com.pneumonia_backend_ai.dto.LCPredictionResponse;
 import com.pneumonia_backend_ai.utils.ProcessUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.List;
-
 
 @RequiredArgsConstructor
 
 @Service
-public class DiseaseSymptomsService {
+public class LungCancerService {
 
     private final ObjectMapper objectMapper;
     private final ProcessUtils processUtils;
 
-    public DiseaseResponse getDiseaseDetails(List<String> symptoms){
+    public LCPredictionResponse getPrediction(LCPatientInfoRequest request){
+
+        List<String> symptoms = request.convertToList();
+
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder("python3", processUtils.resolvePythonScriptPath("predict/predict_disease_prediction.py"));
+            ProcessBuilder processBuilder = new ProcessBuilder("python3", processUtils.resolvePythonScriptPath("predict/predict_lung_cancer.py"));
             processBuilder.command().addAll(symptoms);
             Process process = processBuilder.start();
             String jsonResponse = processUtils.readOutput(process);
@@ -29,14 +33,13 @@ public class DiseaseSymptomsService {
             int exitCode = process.waitFor();
 
             if (exitCode == 0){
-                DiseaseResponse diseaseResponse = objectMapper.readValue(jsonResponse,DiseaseResponse.class);
-                return diseaseResponse;
+                LCPredictionResponse response = objectMapper.readValue(jsonResponse, LCPredictionResponse.class);
+                return response;
             }
 
-        } catch (IOException  | InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         return null;
     }
-
 }

@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@RestController
 @RequiredArgsConstructor
+
+@RestController
 @RequestMapping("api/symptoms")
 public class DiseaseSymptomsController {
 
     private final DiseaseSymptomsService diseaseSymptomsService;
 
-    @GetMapping("/disease")
+    @GetMapping("/diagnose")
     public ResponseEntity<Response> getDiseaseDetails(@RequestBody SymptomsRequest symptomsRequest){
         return ResponseEntity.ok(
                 Response.builder()
