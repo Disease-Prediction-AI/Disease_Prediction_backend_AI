@@ -19,8 +19,9 @@ public class DiseaseSymptomsController {
 
     private final DiseaseSymptomsService diseaseSymptomsService;
 
-    @GetMapping("/diagnose")
+    @PostMapping("/diagnose")
     public ResponseEntity<Response> getDiseaseDetails(@RequestBody SymptomsRequest symptomsRequest){
+        System.out.println(symptomsRequest);
         return ResponseEntity.ok(
                 Response.builder()
                         .status(HttpStatus.OK)

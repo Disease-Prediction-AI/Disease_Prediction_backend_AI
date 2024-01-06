@@ -20,6 +20,7 @@ public class DiseaseSymptomsService {
 
     public DiseaseResponse getDiseaseDetails(List<String> symptoms){
         try {
+            System.out.println("symptoms : " + symptoms);
             ProcessBuilder processBuilder = new ProcessBuilder("python3", processUtils.resolvePythonScriptPath("predict/predict_disease_prediction.py"));
             processBuilder.command().addAll(symptoms);
             Process process = processBuilder.start();
