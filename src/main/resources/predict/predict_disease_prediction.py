@@ -22,7 +22,7 @@ class DiseaseModel:
     
     def prepare_symptoms_array(self, symptoms):
         symptoms_array = np.zeros((1,133))
-        df = pd.read_csv('src/main/resources/data /clean_dataset_disease_prediction.tsv', sep='\t')
+        df = pd.read_csv('src/main/resources/data/clean_dataset_disease_prediction.tsv', sep='\t')
         
         for symptom in symptoms:
             symptom_idx = df.columns.get_loc(symptom)
@@ -45,7 +45,7 @@ class DiseaseModel:
             return "That disease is not contemplated in this model"
         
         # Read disease dataframe
-        desc_df = pd.read_csv('src/main/resources/data /disease_description.csv')
+        desc_df = pd.read_csv('src/main/resources/data/disease_description.csv')
         desc_df = desc_df.apply(lambda col: col.str.strip())
 
         return desc_df[desc_df['Disease'] == disease_name]['Description'].values[0]
@@ -63,7 +63,7 @@ class DiseaseModel:
             return "That disease is not contemplated in this model"
 
         # Read precautions dataframe
-        prec_df = pd.read_csv('src/main/resources/data /disease_precaution.csv')
+        prec_df = pd.read_csv('src/main/resources/data/disease_precaution.csv')
         prec_df = prec_df.apply(lambda col: col.str.strip())
 
         return prec_df[prec_df['Disease'] == disease_name].filter(regex='Precaution').values.tolist()[0]
@@ -77,7 +77,7 @@ class DiseaseModel:
 
     def disease_list(self):
 
-        df = pd.read_csv('src/main/resources/data /clean_dataset_disease_prediction.tsv', sep='\t')
+        df = pd.read_csv('src/main/resources/data/clean_dataset_disease_prediction.tsv', sep='\t')
         # Preprocessing
         y_data = df.iloc[:,-1]
         X_data = df.iloc[:,:-1]

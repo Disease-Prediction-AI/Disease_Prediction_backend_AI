@@ -27,7 +27,7 @@ public class PneumoniaController {
                         .status(HttpStatus.OK)
                         .statusCode(HttpStatus.OK.value())
                         .message("pneumonia prediction")
-                        .data(Map.of("prediction", pneumoniaService.getPneumoniaPrediction(file)))
+                        .data(Map.of("prediction", pneumoniaService.getPneumoniaPrediction(file)) )
                         .build()
         );
     }
