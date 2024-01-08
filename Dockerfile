@@ -13,11 +13,7 @@ RUN apt-get update && \
     apt-get install -y python3.9 python3-pip && \
     ln -s /usr/bin/python3.9 /usr/bin/python
 
-# Copy the Python scripts, requirements.txt, and additional folders into the container
-COPY src/main/resources/*.py /app/
-COPY src/main/resources/data /app/data
-COPY src/main/resources/model /app/model
-COPY requirements.txt /app/
+
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
