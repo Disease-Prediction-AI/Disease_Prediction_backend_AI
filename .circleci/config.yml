@@ -84,8 +84,6 @@ workflows:
           tag: $CIRCLE_SHA1,latest
           docker-password: DOCKER_PASSWORD
           docker-username: DOCKER_USERNAME
-          docker-context: ./
-          path: ./
           requires:
             - "build maven project"
       - tag-docker-images:
