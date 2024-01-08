@@ -31,6 +31,7 @@ public class PneumoniaService {
             ProcessBuilder processBuilder = new ProcessBuilder("python3", processUtils.resolvePythonScriptPath("predict/predict_pneumonia.py"));
             processBuilder.command().add(tempFile.toString());
             Process process = processBuilder.start();
+            System.out.println(processUtils.readError(process));
             String jsonResponse = processUtils.readOutput(process);
             jsonResponse = parseJsonOnly(jsonResponse);
             System.out.println("response : " + jsonResponse);

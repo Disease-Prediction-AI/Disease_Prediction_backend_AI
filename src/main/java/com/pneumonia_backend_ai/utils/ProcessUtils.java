@@ -32,4 +32,21 @@ public class ProcessUtils {
         return output.toString();
     }
 
+    public String readError(Process process)  {
+        InputStream errorStream = process.getErrorStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(errorStream));
+
+        StringBuilder output = new StringBuilder();
+        String line;
+        try{
+
+            while ((line = reader.readLine()) != null) {
+                output.append(line);
+            }
+        }catch (IOException exception){
+            System.out.println("error");
+        }
+
+        return output.toString();
+    }
 }
