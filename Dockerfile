@@ -11,8 +11,8 @@ COPY . ./
 # Install Python 3.9 and pip
 RUN apt-get update && \
     apt-get install -y python3.9 python3-pip && \
-    ln -s /usr/bin/python3.9 /usr/bin/python
-
+    ln -s /usr/bin/python3.9 /usr/bin/python && \
+    apt-get install ffmpeg libsm6 libxext6 -y
 
 
 # Install Python dependencies
