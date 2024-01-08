@@ -53,7 +53,7 @@ public class AppConfig {
             public void addCorsMappings(@NonNull CorsRegistry registry) {
                 registry
                         .addMapping("/**")
-                        .allowedOrigins("http://localhost:3000")
+                        .allowedOrigins("http://localhost:3000", "https://front-ai.vercel.app")
                         .allowedMethods("*")
                         .allowedHeaders("*");
             }
