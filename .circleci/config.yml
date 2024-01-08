@@ -26,7 +26,7 @@ jobs:
           name: Build
           command: mvn -B -DskipTests clean package
       - persist_to_workspace:
-          root: /app
+          root: ~/project
           paths:
             - "."
       # Then run your tests!
