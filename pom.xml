@@ -13,6 +13,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pneumonia_backend_ai</name>
 	<description>Demo project for Spring Boot</description>
+	<build>
+		<finalName>${project.artifactId}-${version}</finalName>
+	</build>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
