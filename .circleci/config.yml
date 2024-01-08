@@ -86,8 +86,9 @@ workflows:
           docker-username: DOCKER_USERNAME
           docker-context: ./
           path: ./
+          requires:
+            - "build maven project"
       - tag-docker-images:
           requires:
             - "Push backend service image"
-            - "build maven project"
 
