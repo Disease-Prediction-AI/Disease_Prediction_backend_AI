@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Expose the port on which the Spring Boot application will run
 EXPOSE 8080
 
-RUN mv target/*.jar target/app.jar
+RUN mv /app/target/*.jar /app/target/app.jar
 
 # Define the command to run the Spring Boot application when the container starts
 CMD ["java", "-jar", "target/app.jar"]
