@@ -1,0 +1,14 @@
+joblib
+markdown-it-py
+wheel
+numpy
+Pillow
+pydeck
+requests
+scikit-learn
+scipy
+opencv-python
+xgboost
+zipp
+keras
+pandas
