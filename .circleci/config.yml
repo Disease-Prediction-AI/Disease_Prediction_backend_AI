@@ -88,7 +88,7 @@ workflows:
           tag: $CIRCLE_SHA1,latest
           docker-password: DOCKER_PASSWORD
           docker-username: DOCKER_USERNAME
-          attach_at: ./
+          attach-at: ./
           requires:
             - "build maven project"
           
